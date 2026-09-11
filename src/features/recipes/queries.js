@@ -1,4 +1,4 @@
-import { queryOptions, mutationOptions } from '@tanstack/react-query';
+import { queryOptions } from '@tanstack/react-query';
 import {
   fetchAllRecipes,
   fetchRecipesSearched,
@@ -49,3 +49,9 @@ export const getRecipeByIdQuery = (id) => {
     },
   });
 };
+
+// export const createRecipeMutation = () => {
+//   return mutationOptions({
+//     mutationFn: postNewRecipe,
+//   });
+// };

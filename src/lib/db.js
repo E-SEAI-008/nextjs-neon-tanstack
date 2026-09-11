@@ -2,7 +2,7 @@ import { neon } from '@neondatabase/serverless';
 
 const sql = neon(process.env.DATABASE_URL);
 
-// for the /api/recipes endpoint
+// /api/recipes endpoint
 export async function getAllRecipes() {
     const recipes = await sql`SELECT * FROM recipes`;
     return recipes;
@@ -24,18 +24,17 @@ export async function createRecipe(userId, recipe) {
     return result[0];
 };
 
-// for the /api/recipes/[id] endpoint
+// /api/recipes/[id]/route.js endpoint
 export async function getRecipeById(id) {
-  console.log(id);
     const recipes = await sql`SELECT * FROM recipes WHERE id=${id}`;
     return recipes[0];
 };
 
 export const updateRecipe = async (id, recipe) => {
-  const { title, description, category, ingredients, instructions } = recipe;
+  const { title, category, duration, servings, ingredients, description, image } = recipe;
   const result = await sql`
     UPDATE recipes
-    SET title = ${title}, description = ${description}, category = ${category}, ingredients = ${ingredients}, instructions = ${instructions}
+    SET title = ${title}, description = ${description}, category = ${category}, duration = ${duration}, servings = ${servings}, ingredients = ${ingredients}, image = ${image}
     WHERE id = ${id}
     RETURNING *
   `;

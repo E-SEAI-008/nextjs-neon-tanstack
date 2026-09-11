@@ -16,4 +16,4 @@ function RecipeList({query}) {
   )
 }
 
-export default RecipeList
+export default RecipeList;
